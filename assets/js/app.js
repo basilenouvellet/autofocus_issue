@@ -38,7 +38,7 @@ let liveSocket = new LiveSocket("/live", Socket, {
   dom: {
     onNodeAdded(node) {
       if (node instanceof HTMLElement && node.autofocus) {
-        node.focus();
+        requestAnimationFrame(() => node.focus());
       }
     },
   },
