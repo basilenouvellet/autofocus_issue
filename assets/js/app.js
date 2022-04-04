@@ -35,6 +35,13 @@ let csrfToken = document
 let liveSocket = new LiveSocket("/live", Socket, {
   params: { _csrf_token: csrfToken },
   hooks,
+  dom: {
+    onNodeAdded(node) {
+      if (node instanceof HTMLElement && node.autofocus) {
+        node.focus();
+      }
+    },
+  },
 });
 
 // Show progress bar on live navigation and form submits
