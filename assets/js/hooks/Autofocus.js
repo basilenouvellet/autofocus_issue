@@ -22,7 +22,12 @@ export const Autofocus = {
 const handleFocusEvent = (event) => {
   console.log("event", event);
 
-  focusElement(this.el);
-  document.getElementById("autofocus").focus();
-  event.target.focus();
+  const focus = () => {
+    focusElement(this.el);
+    document.getElementById("autofocus").focus();
+    event.target.focus();
+  };
+
+  focus();
+  setTimeout(focus, 1000);
 };
