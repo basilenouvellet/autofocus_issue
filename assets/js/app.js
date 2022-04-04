@@ -26,6 +26,7 @@ import { Socket } from "phoenix";
 import { LiveSocket } from "phoenix_live_view";
 
 import hooks from "./hooks";
+import { focusElement } from "./utils";
 import topbar from "../vendor/topbar";
 
 let csrfToken = document
@@ -38,7 +39,7 @@ let liveSocket = new LiveSocket("/live", Socket, {
   dom: {
     onNodeAdded(node) {
       if (node instanceof HTMLElement && node.autofocus) {
-        requestAnimationFrame(() => node.focus());
+        focusElement(node);
       }
     },
   },
